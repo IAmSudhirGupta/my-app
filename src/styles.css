@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    background-color: #f8f9fa !important;
-    min-height: calc(100vh - 48px);
-    line-height: 1;
+    background-color: rgb(218, 224, 230) !important;
     font-family: IBMPlexSans, Helvetica Neue, Segoe UI, Helvetica, Verdana, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
