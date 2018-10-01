@@ -1,0 +1,27 @@
+.card:hover {
+    border: 1px solid #865555;
+}
+
+.like-box {
+    background-color: #F7F8FA;
+    max-width: 5.333333%;
+    padding: 0;
+    text-align: center;
+}
+
+.action {}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    display: block;
+}
+
+.fa {
+    font-size: 30px;
+}
+
+.action-btn:hover {
+    color: #865555;
+}
