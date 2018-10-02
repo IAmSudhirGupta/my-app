@@ -1,5 +1,28 @@
 <div class="row">
-    <div class="col-md-12" class="margin-content">
-
+    <div class="container margin-content">
+        <div class="col-md-4 m-auto">
+            <form role="form" class="form-width">
+                <h4 class="form-header text-center">Login</h4>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="E-Mail Address" />
+                    <i class="fa fa-envelope iconalign"></i> </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" />
+                    <i class="fa fa-lock iconalign"></i> </div>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" />
+                    <label class="custom-control-label" for="customCheck1">Remember me</label>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-default col-md-6" type="submit">Login</button>
+                </div>
+                <div class="mb-2 text-center"> --------------OR--------------- </div>
+                <div class="text-center"> <a href="https://twitter.com" class="icon-button twitter"><i class="fa fa-twitter"></i></a> <a href="https://facebook.com" class="icon-button facebook"><i class="fa  fa-facebook"></i></a>
+                    <a href="https://plus.google.com" class="icon-button google-plus"><i class="fa fa-google-plus"></i></a>
+                </div>
+                <hr />
+                <div class="pb-4"> <a href="#" class="float-left">Forgot password ?</a> <a routerLink="/users/register" class="float-right">Register</a> </div>
+            </form>
+        </div>
     </div>
 </div>
