@@ -7,6 +7,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContentLeftComponent } from './components/content-left/content-left.component';
 import { ContentRightComponent } from './components/content-right/content-right.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { ContentsComponent } from './components/contents/contents.component';
 
 
 @NgModule({
@@ -15,10 +19,14 @@ import { ContentRightComponent } from './components/content-right/content-right.
     NavbarComponent,
     FooterComponent,
     ContentLeftComponent,
-    ContentRightComponent
+    ContentRightComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContentsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
