@@ -1,68 +1,114 @@
 <div class="row">
     <div class="container margin-content">
         <div class="col-md-7 m-auto">
-            <form role="form" class="form-width">
+            <form role="form" #userForm="ngForm" class="form-width" (ngSubmit)="onSubmit(userForm)" autocomplete="off">
                 <h4 class="form-header text-center">Register</h4>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" placeholder="First Name" />
-                        <i class="fa fa-user iconalign"></i> </div>
+                        <input type="text" class="form-control" placeholder="First Name" #firstName="ngModel" name="firstName" [ngClass]="{'is-invalid':firstName.errors && firstName.touched}" [(ngModel)]="user.firstName" minlength="2" required/>
+                        <i class="fa fa-user iconalign"></i>
+                        <div class="invalid-feedback" [hidden]="!firstName.errors?.required">
+                            First name required.
+                        </div>
+                        <div class="invalid-feedback" [hidden]="!firstName.errors?.minlength">
+                            First name must be atleast 2 chars.
+                        </div>
+                    </div>
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" placeholder="Last Name" />
-                        <i class="fa fa-user iconalign"></i> </div>
+                        <input type="text" class="form-control" placeholder="Last Name" #lastName="ngModel" name="lastName" [ngClass]="{'is-invalid':lastName.errors && lastName.touched}" [(ngModel)]="user.lastName" minlength="2" required />
+                        <i class="fa fa-user iconalign"></i>
+                        <div class="invalid-feedback" [hidden]="!lastName.errors?.required">
+                            Last name required.
+                        </div>
+                        <div class="invalid-feedback" [hidden]="!lastName.errors?.minlength">
+                            Last name must be atleast 2 chars.
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" placeholder="Username" />
-                        <i class="fa fa-user iconalign"></i> </div>
+                        <input type="text" class="form-control" placeholder="Username" #userName="ngModel" name="userName" [ngClass]="{'is-invalid':userName.errors && userName.touched}" [(ngModel)]="user.userName" minlength="2" required/>
+                        <i class="fa fa-user iconalign"></i>
+                        <div class="invalid-feedback" [hidden]="!userName.errors?.required">
+                            Username required.
+                        </div>
+                        <div class="invalid-feedback" [hidden]="!userName.errors?.minlength">
+                            Username must be atleast 2 chars.
+                        </div>
+                    </div>
                     <div class="form-group col-md-6">
-                        <input type="number" class="form-control" placeholder="Phone Number" />
-                        <i class="fa fa-phone iconalign"></i> </div>
+                        <input type="number" class="form-control" placeholder="Phone Number" #phone="ngModel" name="phone" [ngClass]="{'is-invalid':phone.errors && phone.touched}" [(ngModel)]="user.phone" min="10" required/>
+                        <i class="fa fa-phone iconalign"></i>
+                        <div class="invalid-feedback" [hidden]="!phone.errors?.required">
+                            Phone required.
+                        </div>
+                        <div class="invalid-feedback" [hidden]="!phone.errors?.minlength">
+                            Phone must be 10 digit.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Your E-Mail Address" />
-                    <i class="fa fa-envelope iconalign"></i> </div>
+                    <input type="text" class="form-control" placeholder="Your E-Mail Address" #email="ngModel" name="email" [ngClass]="{'is-invalid':email.errors && email.touched}" [(ngModel)]="user.email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+                        required/>
+                    <i class="fa fa-envelope iconalign"></i>
+                    <div class="invalid-feedback" [hidden]="!email.errors?.required">
+                        Email required.
+                    </div>
+                    <div class="invalid-feedback" [hidden]="!email.errors?.pattern">
+                        Email is not valid.
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <select name="gender" class="form-control" style="padding-left:10px !important">
-                      <option value="">Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
+                        <select name="gender" class="form-control" style="padding-left:10px !important" name="gender" [(ngModel)]="user.gender">
+                          <option value="">Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                        </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Date Of Birth : DD/MM/YY" />
+                        <input type="date" class="form-control" placeholder="Date Of Birth : DD/MM/YY" name="dob" [(ngModel)]="user.dob" />
                         <i class="fa fa-birthday-cake iconalign"></i> </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <select name="country" class="form-control" style="padding-left:10px !important">
-                      <option value="">Country</option>
-                      <option>United States</option>
-                      <option>France</option>
-                      <option>Germany</option>
-                      <option>India</option>
-                    </select>
+                        <select name="country" class="form-control" style="padding-left:10px !important" name="country" [(ngModel)]="user.country">
+                          <option value="">Country</option>
+                          <option>United States</option>
+                          <option>France</option>
+                          <option>Germany</option>
+                          <option>India</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" style="padding-left:10px !important" placeholder="Your Company's Name" />
+                        <input type="text" class="form-control" style="padding-left:10px !important" placeholder="Your Company's Name" name="company" [(ngModel)]="user.country" />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-6" style="min-height:100px">
-                        <textarea class="form-control" style="min-height:100px; max-height:100px" placeholder="Home Address"></textarea>
-                        <i class="fa fa-street-view iconalign" style="position: relative; top:-100px;"></i> </div>
-                    <div class="form-group col-md-6" style="min-height:100px">
-                        <textarea class="form-control" style="min-height:100px; max-height:100px" placeholder="Office Address"></textarea>
+                    <div class="form-group col-md-12" style="min-height:100px">
+                        <textarea class="form-control" style="min-height:100px; max-height:100px" placeholder="Home Address" name="address" [(ngModel)]="user.address"></textarea>
                         <i class="fa fa-street-view iconalign" style="position: relative; top:-100px;"></i> </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" placeholder="Password" />
-                        <i class="fa fa-lock iconalign"></i> </div>
+                        <input type="password" class="form-control" placeholder="Password" #password="ngModel" name="password" [ngClass]="{'is-invalid':password.errors && password.touched}" [(ngModel)]="user.password" minlength="5" required/>
+                        <i class="fa fa-lock iconalign"></i>
+                        <div class="invalid-feedback" [hidden]="!password.errors?.required">
+                            Password required.
+                        </div>
+                        <div class="invalid-feedback" [hidden]="!password.errors?.minlength">
+                            Password must be greated than 4 chars.
+                        </div>
+                    </div>
                     <div class="form-group col-md-6">
-                        <input type="number" class="form-control" placeholder="Confirm Password" />
-                        <i class="fa fa-lock iconalign"></i> </div>
+                        <input type="password" class="form-control" placeholder=" Confirm Password" #confirmPassword="ngModel" name="confirmPassword" [ngClass]="{'is-invalid':confirmPassword.errors && confirmPassword.touched}" [(ngModel)]="user.confirmPassword" minlength="2"
+                            required validateEqual="password" />
+                        <i class="fa fa-lock iconalign"></i>
+                        <small [hidden]="confirmPassword.valid ||  (confirmPassword.pristine)">
+                          Password mismatch
+                      </small>
+
+                    </div>
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1" />
