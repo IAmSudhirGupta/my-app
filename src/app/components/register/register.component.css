@@ -45,6 +45,13 @@ input.checkbox:focus {
     text-decoration: none;
 }
 
+.btn-default:disabled {
+    color: white !important;
+    background-color: #007bff !important;
+    border: 1px solid #007bff !important;
+    text-decoration: none;
+}
+
 .btn:active {
     box-shadow: none !important;
 }

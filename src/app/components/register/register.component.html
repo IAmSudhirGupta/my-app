@@ -101,12 +101,15 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="password" class="form-control" placeholder=" Confirm Password" #confirmPassword="ngModel" name="confirmPassword" [ngClass]="{'is-invalid':confirmPassword.errors && confirmPassword.touched}" [(ngModel)]="user.confirmPassword" minlength="2"
+                        <input type="password" class="form-control" placeholder=" Confirm Password" #confirmPassword="ngModel" name="confirmPassword" [ngClass]="{'is-invalid':confirmPassword.errors && confirmPassword.touched}" [(ngModel)]="user.confirmPassword" minlength="5"
                             required validateEqual="password" />
                         <i class="fa fa-lock iconalign"></i>
-                        <small [hidden]="confirmPassword.valid ||  (confirmPassword.pristine)">
-                          Password mismatch
-                      </small>
+                        <div class="invalid-feedback" [hidden]="!confirmPassword.errors?.required">
+                            Password required.
+                        </div>
+                        <div class="invalid-feedback" [hidden]="!confirmPassword.errors?.minlength">
+                            Password must be greated than 4 chars.
+                        </div>
 
                     </div>
                 </div>
@@ -119,7 +122,7 @@
                     <label class="custom-control-label" for="customCheck2">Recieve best offers and updates.</label>
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-default col-md-5" type="submit">Register</button>
+                    <button class="btn btn-default col-md-5" type="submit" [disabled]='!userForm.valid'>Register</button>
                 </div>
                 <hr />
                 <div class="text-center">
