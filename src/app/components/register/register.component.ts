@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/User';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -24,17 +26,37 @@ export class RegisterComponent implements OnInit {
     companyName: '',
     address: '',
     password: '',
-    confirmPassword:''
+    confirmPassword: '',
+    isTCAccepted: false
   };
 
-  constructor() {
+  constructor(private userService: UserService, private router: Router) {
 
   }
 
   ngOnInit() {
   }
-  onSubmit(userForm){
-
+  onSubmit(userForm) {
+    if (userForm.valid) {
+      this.userService.registerUser(this.user).subscribe((response) => {
+        if (response.auth) {
+          localStorage.setItem('token', response.token);
+          this.userService.getUserProfile().subscribe((resp) => {
+            console.log(resp);
+            for (const key in resp) {
+              if (resp.hasOwnProperty(key)) {
+                localStorage.setItem(key, resp[key]);
+              }
+            }
+            this.router.navigate(['/']);
+          }, error => {
+            console.log('error while retrieving user details..');
+          });
+        }
+      }, error => {
+        console.log('error while registering users...', error);
+      });
+    }
   }
 
 }

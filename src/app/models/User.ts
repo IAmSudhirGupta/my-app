@@ -11,4 +11,5 @@ export interface User {
   address: string;
   password?: string;
   confirmPassword: string;
+  isTCAccepted: boolean;
 }

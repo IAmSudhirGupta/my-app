@@ -1,20 +1,20 @@
 <div class="row">
     <div class="container margin-content">
         <div class="col-md-4 m-auto">
-            <form role="form" class="form-width">
+            <form role="form" class="form-width" #loginForm="ngForm" (ngSubmit)="authenticateUser(loginForm)">
                 <h4 class="form-header text-center">Login</h4>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="E-Mail Address" />
+                    <input type="text" class="form-control" placeholder="User Email" #email="ngModel" name="email" [ngClass]="{'is-invalid':email.errors && email.touched}" [(ngModel)]="user.email" minlength="2" required />
                     <i class="fa fa-envelope iconalign"></i> </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" />
+                    <input type="password" class="form-control" placeholder="Password" name="password" #password="ngModel" name="password" [ngClass]="{'is-invalid':password.errors && password.touched}" [(ngModel)]="user.password" minlength="5" required/>
                     <i class="fa fa-lock iconalign"></i> </div>
                 <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1" />
-                    <label class="custom-control-label" for="customCheck1">Remember me</label>
+                    <input type="checkbox" class="custom-control-input" id="rememberMe" />
+                    <label class="custom-control-label" for="rememberMe">Remember me</label>
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-default col-md-6" type="submit">Login</button>
+                    <button class="btn btn-default col-md-6" type="submit" [disabled]='!loginForm.valid'>Login</button>
                 </div>
                 <div class="mb-2 text-center"> --------------OR--------------- </div>
                 <div class="text-center"> <a href="https://twitter.com" class="icon-button twitter"><i class="fa fa-twitter"></i></a> <a href="https://facebook.com" class="icon-button facebook"><i class="fa  fa-facebook"></i></a>
