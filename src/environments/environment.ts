@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  API_BASE_URL: 'https://node-api-sudhir.herokuapp.com/'
+  API_BASE_URL: 'https://node-api-sudhir.herokuapp.com/api/'
 };
