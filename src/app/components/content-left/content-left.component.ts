@@ -11,5 +11,8 @@ export class ContentLeftComponent implements OnInit {
 
   ngOnInit() {
   }
+  upVode() {
+    console.log('upvote..');
+  }
 
 }
