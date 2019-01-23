@@ -1,7 +1,12 @@
 .card:hover {
     border: 1px solid #865555;
 }
-
+.card {
+    /* margin-bottom: 10px; */
+}
+.card-body{
+    padding:10px 0px 10px 0px;
+}
 .like-box {
     background-color: #F7F8FA;
     max-width: 5.333333%;
@@ -24,4 +29,7 @@
 
 .action-btn:hover {
     color: #865555;
+}
+.margin-bottom-15{
+    margin-bottom: 10px;
 }

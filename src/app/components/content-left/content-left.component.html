@@ -1,27 +1,24 @@
 <div class="row">
-    <div class="card">
+
+    <div class="card margin-bottom-15" *ngFor="let post of posts">
         <div class="row" style='margin-left: 1px'>
             <div class="col-md-1 like-box">
                 <div class="action">
-                    <a href="#" class="action-btn" click="upVode()"><i class="fa fa-angle-up"></i></a>
+                    <a href="#" class="action-btn" (click)="upVode($event)"><i class="fa fa-angle-up"></i></a>
                     <small>100</small>
-                    <a href="#" class="action-btn"><i class="fa fa-angle-down"></i></a>
+                    <a href="#" class="action-btn" (click)="downVote($event)"><i class="fa fa-angle-down"></i></a>
                 </div>
             </div>
             <div class="col-md-11">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="col-md-12">
-                            <h1>Alice in Wonderland, part dos</h1>
-                            <p>'You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock
-                                Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words: 'Yes, we went to school in the sea, though you mayn't believe it—' 'I never said I didn't!' interrupted Alice. 'You did,' said the
-                                Mock Turtle.</p>
-                            <div>
-                                <span class="badge">Posted 2012-08-02 20:47:04</span>
-                                <div class="pull-right"><span class="label label-default">alice</span> <span class="label label-primary">story</span> <span class="label label-success">blog</span> <span class="label label-info">personal</span> <span class="label label-warning">Warning</span>
-                                    <span class="label label-danger">Danger</span></div>
-                            </div>
-                        </div>
+                    <h4>{{post.title | slice:0:60}}</h4>
+                    <p>{{post.body}}</p>
+                    <div>
+                        <span class="badge">Posted {{ today | date :'medium'}}</span>
+                        <div class="pull-right">
+                            <span class="badge badge-primary">story</span> 
+                            <span class="badge badge-success">blog</span> 
+                            <span class="badge badge-info">personal</span> 
                     </div>
                 </div>
             </div>

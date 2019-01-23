@@ -13,7 +13,8 @@ export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   firstName: string = localStorage.getItem('firstName');
   lastName: string = localStorage.getItem('lastName');
-  displayName: string = this.firstName + ' ' + this.lastName;
+  userName: string = localStorage.getItem('userName');
+  displayName: string = this.userName;
   constructor( private auth: AuthService, private router: Router) {
     this.authToken = this.auth.getToken();
     if (!this.authToken) {
@@ -28,7 +29,6 @@ export class NavbarComponent implements OnInit {
 
   logOut(event) {
     localStorage.clear();
-    console.log(localStorage.getItem('token'));
     this.router.navigate(['/users/login']);
   }
   test() {
