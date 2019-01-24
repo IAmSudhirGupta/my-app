@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ContentLeftComponent } from './components/content-left/content-left.component';
 import { ContentRightComponent } from './components/content-right/content-right.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -18,25 +17,31 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../app/services/token.intercepter';
 import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
+import { PostsDetailsComponent } from './components/posts-details/posts-details.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { EventService } from './services/event-service.service';
+import { PostsModule } from './components/posts/posts.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ContentLeftComponent,
     ContentRightComponent,
     LoginComponent,
     RegisterComponent,
     ContentsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PostsDetailsComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    PostsModule
   ],
-  providers: [UserService, AuthService, PostsService,{
+  providers: [UserService, AuthService, PostsService, EventService, {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true

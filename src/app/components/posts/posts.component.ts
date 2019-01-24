@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../services/posts.service';
+import { Title }     from '@angular/platform-browser';
+
+
 @Component({
-  selector: 'app-content-left',
-  templateUrl: './content-left.component.html',
-  styleUrls: ['./content-left.component.css']
+  selector: 'app-posts',
+  templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.css']
 })
-export class ContentLeftComponent implements OnInit {
+export class PostsComponent implements OnInit {
   posts = [];
   today = new Date();
   
-  constructor( private postService: PostsService) {
+  constructor( private postService: PostsService, private titleService: Title) {
     console.log(this.today);
       //this.postDate =  this.datePipe.transform(this.postDate, 'yyyy-MM-dd');
    }
 
   ngOnInit() {
+    this.titleService.setTitle( 'Posts' );
     this.postService.getAllPosts().subscribe((response)=>{
       this.posts = response;
       console.log(response);
@@ -29,5 +33,4 @@ export class ContentLeftComponent implements OnInit {
   downVote(event) {
     console.log('donwvote',event);
   }
-
 }

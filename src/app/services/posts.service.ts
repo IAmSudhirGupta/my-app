@@ -11,15 +11,15 @@ export class PostsService {
     return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
   getPost(id): Observable <any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts'+id);
+    return this.http.get('https://jsonplaceholder.typicode.com/posts/'+id);
   }
   addPost(reqBody: Object):Observable<any> {
     return this.http.post('https://jsonplaceholder.typicode.com/posts',reqBody);
   }
   updatePost(id, reqBody: Object):Observable<any> {
-    return this.http.put('https://jsonplaceholder.typicode.com/posts'+id, reqBody);
+    return this.http.put('https://jsonplaceholder.typicode.com/posts/'+id, reqBody);
   }
   deletePost(id): Observable <any>{
-    return this.http.delete('https://jsonplaceholder.typicode.com/posts'+id);
+    return this.http.delete('https://jsonplaceholder.typicode.com/posts/'+id);
   }
 }

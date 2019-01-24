@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { EventService } from '../../services/event-service.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private eventService: EventService) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
                 }
               }
               this.router.navigate(['/']);
+              this.eventService.authenticateUser(true);
+              this.eventService.userDisplayName(resp.userName);
             }, error => {
               console.log('error while retrieving user details..');
             });
