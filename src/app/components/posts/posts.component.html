@@ -10,7 +10,7 @@
       </div>
       <div class="col-md-11">
           <div class="card-body">
-              <h4> <a href="/posts/{{post.id}}">{{post.title | slice:0:60}} </a></h4>
+            <h4><a [routerLink]="['/posts', post.id]" routerLinkActive="router-link-active">{{post.title | slice:0:60}} </a></h4>
               <p>{{post.body}}</p>
               <div>
                   <span class="badge">Posted {{ today | date :'medium'}}</span>

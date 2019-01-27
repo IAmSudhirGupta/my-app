@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { PostsDetailsComponent } from '../posts-details/posts-details.component';
 import { PostsComponent } from './posts.component';
+import { ContentsComponent } from '../contents/contents.component';
+import { AuthGuard } from '../../auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: PostsComponent }
+    { path: 'posts', canActivate:[AuthGuard], component: ContentsComponent },
+    { path: 'posts/:id', canActivate:[AuthGuard], component: PostsDetailsComponent }
   ];
 
 @NgModule({

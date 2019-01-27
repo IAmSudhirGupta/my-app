@@ -33,6 +33,8 @@ export class NavbarComponent implements OnInit {
 
   logOut(event) {
     localStorage.clear();
+    this.eventService.authenticateUser(false);
+    this.eventService.isAuthenticated.subscribe(auth => this.isAuthenticated = auth);
     this.router.navigate(['/users/login']);
   }
 }

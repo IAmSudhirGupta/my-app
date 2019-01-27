@@ -21,6 +21,11 @@ import { PostsDetailsComponent } from './components/posts-details/posts-details.
 import { PostsComponent } from './components/posts/posts.component';
 import { EventService } from './services/event-service.service';
 import { PostsModule } from './components/posts/posts.module';
+import { AuthGuard } from './auth/auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ProfileModule } from './components/profile/profile.module';
+import { SettingsModule } from './components/settings/settings.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,16 +37,20 @@ import { PostsModule } from './components/posts/posts.module';
     ContentsComponent,
     NotFoundComponent,
     PostsDetailsComponent,
-    PostsComponent
+    PostsComponent,
+    ProfileComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     FormsModule,
-    PostsModule
+    PostsModule,
+    ProfileModule,
+    SettingsModule,
+    AppRoutingModule
   ],
-  providers: [UserService, AuthService, PostsService, EventService, {
+  providers: [UserService, AuthService, PostsService, EventService, AuthGuard, {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
